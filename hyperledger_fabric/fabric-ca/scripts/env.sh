@@ -118,7 +118,9 @@ function initOrdererOrgVars {
    ORG_DIR=${CRYPTO_ORDERER}/${DOMAIN}
    ROOT_CA_CERTFILE=/${ORG_DIR}/ca/${ROOT_CA_HOST}-cert.pem
    ANCHOR_TX_FILE=/${ORG_DIR}/anchors.tx
-   ORG_MSP_ID=${ORG}MSP
+   ORG_MSP_ID=`echo ${ORG:0:1}|tr '[a-z]' '[A-Z]'`
+   ORG_MSP_ID=${ORG_MSP_ID}${ORG:1}MSP
+   #ORG_MSP_ID=${ORG}MSP
    ORG_MSP_DIR=/${ORG_DIR}/msp
    ORG_ADMIN_CERT_FILENAME=Admin@${DOMAIN}-cert.pem
    ORG_ADMIN_CERT=${ORG_MSP_DIR}/admincerts/${ORG_ADMIN_CERT_FILENAME}
@@ -166,7 +168,9 @@ function initPeerOrgVars {
    ORG_DIR=${CRYPTO_PEER}/${DOMAIN}
    ROOT_CA_CERTFILE=/${ORG_DIR}/ca/${ROOT_CA_HOST}-cert.pem
    ANCHOR_TX_FILE=/${ORG_DIR}/anchors.tx
-   ORG_MSP_ID=${ORG}MSP
+   ORG_MSP_ID=`echo ${ORG:0:1}|tr '[a-z]' '[A-Z]'`
+   ORG_MSP_ID=${ORG_MSP_ID}${ORG:1}MSP
+   #ORG_MSP_ID=${ORG}MSP
    ORG_MSP_DIR=/${ORG_DIR}/msp
    ORG_ADMIN_CERT_FILENAME=Admin@${DOMAIN}-cert.pem
    ORG_ADMIN_CERT=${ORG_MSP_DIR}/admincerts/${ORG_ADMIN_CERT_FILENAME}

@@ -288,11 +288,11 @@ function generateChannelArtifacts() {
 
   for ORG in $PEER_ORGS; do
      initPeerOrgVars $ORG
-#     org=`echo ${ORG:0:1}|tr '[a-z]' '[A-Z]'`
-#     org=${org}${ORG:1}MSP
+     org=`echo ${ORG:0:1}|tr '[a-z]' '[A-Z]'`
+     org=${org}${ORG:1}
      log "Generating anchor peer update transaction for $org at $ANCHOR_TX_FILE"
      configtxgen -configPath /data -profile TwoOrgsChannel -outputAnchorPeersUpdate $ANCHOR_TX_FILE \
-                 -channelID $CHANNEL_NAME -asOrg $ORG
+                 -channelID $CHANNEL_NAME -asOrg $org
      if [ "$?" -ne 0 ]; then
         fatal "Failed to generate anchor peer update for $ORG"
      fi
